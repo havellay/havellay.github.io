@@ -1,0 +1,16 @@
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static 'oldgold/style.css' %}" />
+
+{% if item_list %}
+  <ul>
+  {% for item in item_list %}
+    <li><img src="{% static item.cover_img %}" width="60" height="60"></li>
+    <li><a href="{% url 'oldgold:detail' item.id %}">{{ item.description }}</a></li>
+    <li>{{ item.weight }}</li>
+    <li>{{ item.pub_date }}</li>
+    <li>{{ item.valid_for }}</li>
+  {% endfor %}
+  </ul>
+{% else %}
+  <p>No items are available.</p>
+{% endif %}
